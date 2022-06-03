@@ -1,0 +1,18 @@
+{
+  "ConnectionStrings": {
+    "task_management_db": "Server=localhost;Database=TaskManagement;User ID=postgres;MultipleActiveResultSets=True;TRUSTED_CONNECTION = TRUE"
+  },
+
+  "PostgreSql": {
+    "db_conn_string": "Server=localhost;Port=5432;Database=TaskManagementDb;User ID=postgres;Password=1234;",
+    "password": "1234"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
