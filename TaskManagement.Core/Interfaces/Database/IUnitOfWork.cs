@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskManagement.Core.Interfaces.Database
-{
-    public interface IUnitOfWork
-    {
-        int SaveChanges();
+namespace TaskManagement.Core.Interfaces.Database;
 
-        Task<int> SaveChangesAsync();        
-        Task Dispose();
-    }
+public interface IUnitOfWork
+{
+    int SaveChanges();
+
+    Task<int> SaveChangesAsync();        
+    Task Dispose();
 }

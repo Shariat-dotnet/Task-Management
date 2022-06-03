@@ -32,7 +32,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<TaskManage
         return new TaskManagementDbContext(builder.Options);
     }
 }
-public class TaskManagementDbContext : IdentityDbContext<ApplicationUser>
+public class TaskManagementDbContext : DbContext
 {
 
 

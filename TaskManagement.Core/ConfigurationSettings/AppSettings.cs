@@ -2,8 +2,9 @@
 {
     public class AppSettings
     {
+       
         //public bool IsWriteLog { get; set; }
-        public string[] AllowedHosts { get; set; }
+        public string AllowedHosts { get; set; }
         public PostgreSql PostgreSql { get; set; }
         public Logging Logging { get; set; }
     }

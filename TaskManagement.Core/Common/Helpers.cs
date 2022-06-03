@@ -14,8 +14,8 @@ namespace TaskManagement.Core.Common
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile(@Directory.GetCurrentDirectory() + "/../TaskManagement.Data/Configs/dataSetting.json", optional: false, reloadOnChange: false)
-                .AddJsonFile("/../TaskManagement.Data/Configs/appsettings.json", optional: false, reloadOnChange: false)
-                .AddJsonFile($"/../TaskManagement.Data/Configs/appsettings.{env}.json", optional: true, reloadOnChange: false)
+                //.AddJsonFile("/../TaskManagement.Data/Configs/appsettings.json", optional: false, reloadOnChange: false)
+                //.AddJsonFile($"/../TaskManagement.Data/Configs/appsettings.{env}.json", optional: true, reloadOnChange: false)
                 .AddEnvironmentVariables();
 
             return builder.Build();

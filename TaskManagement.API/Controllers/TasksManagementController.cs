@@ -8,13 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using TaskManagement.Core.Domains;
+using TaskManagement.Core.Infrastructure.Controllers;
 using TaskManagement.Data;
+
+using Throw;
 
 namespace TaskManagement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TasksManagementController : ControllerBase
+    public class TasksManagementController : BaseApiController
+
     {
         private readonly TaskManagementDbContext _context;
 
@@ -61,7 +65,7 @@ namespace TaskManagement.API.Controllers
             {
                 return BadRequest();
             }
-
+            update_audit(ref task);
             _context.Entry(task).State = EntityState.Modified;
 
             try
@@ -92,6 +96,8 @@ namespace TaskManagement.API.Controllers
             {
                 return Problem("Entity set 'TaskManagementDbContext.Tasks'  is null.");
             }
+            task.ThrowIfNull();
+            create_audit(ref task);
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
 
@@ -103,7 +109,7 @@ namespace TaskManagement.API.Controllers
         public async Task<IActionResult> DeleteTask(int id)
         {
             if (_context.Tasks == null)
-            {
+            {                
                 return NotFound();
             }
             var task = await _context.Tasks.FindAsync(id);
@@ -111,7 +117,7 @@ namespace TaskManagement.API.Controllers
             {
                 return NotFound();
             }
-
+            delete_audit(ref task);
             _context.Tasks.Remove(task);
             await _context.SaveChangesAsync();
 
