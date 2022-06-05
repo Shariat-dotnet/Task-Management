@@ -20,7 +20,6 @@ public static class ServiceStartup
 
     public static IServiceCollection AddDatabaseModule(this IServiceCollection services, IConfiguration configuration)
     {
-
         var appSettingsSection = configuration.GetSection("AppSettings");
         var appSettings = appSettingsSection.Get<AppSettings>();
 

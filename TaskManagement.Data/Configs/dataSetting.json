@@ -16,6 +16,6 @@
         "Microsoft.Hosting.Lifetime": "Information"
       }
     },
-    "AllowedHosts": "*"
+    "AllowedHosts": "*,http://localhost:4200/"
   }
 }

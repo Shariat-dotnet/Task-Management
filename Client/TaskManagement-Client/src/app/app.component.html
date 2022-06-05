@@ -1,0 +1,89 @@
+<style>
+  input[type="text"]{
+    margin: 5px;
+    padding: 15px;
+    border: 1px solid wheat;
+    border-radius: 5px;
+    background-color: lightcyan;
+  }
+  .btn{
+     margin: 5px;
+    padding: 5px;
+    border: 1px solid wheat;
+    border-radius: 5px;
+color: rgb(247, 123, 14);
+font-weight: bolder;
+  }
+  .btn:hover{
+   color: rgb(146, 133, 238);
+   box-shadow:2px blueviolet;
+  }
+  .btn-edit{
+    color: orange;
+  }
+  .btn-delete{
+    color: orangered;
+  }
+  #taskList{
+    text-align: center;
+    width: 500px;
+ margin: 0 auto;
+
+  }
+  ul{
+    list-style:none;    
+    
+  }
+  li{
+    padding: 5px;
+    border: 1px solid rgb(247, 123, 14);
+    margin: 5px;
+   
+  }
+ 
+</style>
+
+<div style="height:100vh ;">
+<div style="
+align-items: initial;
+ text-align: center;
+ background-color: rgb(56, 150, 239);
+ color: aliceblue;
+ height: 10%;
+ ">
+
+  <div style="font-size: 30px; font-weight: bolder;">Task Management Hub</div>
+  <div style="display: flex; 
+  justify-content: center;
+  
+  ">
+   
+    <caption>Real-Time task Management System</caption>
+  </div>
+</div>
+
+<div id="play-ground" style="
+background-color:rgb(214, 248, 181) ;
+height: 90%;
+">
+
+
+<div style="height: 100%; display: flex; flex-direction: column;">
+
+<div id="taskList">
+
+<ul>
+  <li>
+    <app-new-task></app-new-task>
+  </li>
+  <li  *ngFor="let task of taskList">
+    <app-task-item [taskId]="task.id" [taskName]="task.taskName" [taskProgress]="task.progress"></app-task-item>
+  </li>
+ 
+</ul>
+</div>
+
+</div>
+
+</div>
+</div>

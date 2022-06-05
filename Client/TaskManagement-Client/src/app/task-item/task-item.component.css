@@ -1,0 +1,28 @@
+#li{
+    display: grid;
+    grid-template-columns: 60% 10% 15% 15%;
+    
+        justify-content: space-around;
+        background-color: rgb(164, 80, 243);
+        color: aliceblue;
+        font-weight: bolder;
+}
+#li-edit {
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    justify-content: space-around;
+    background-color: rgb(164, 80, 243);
+    color: aliceblue;
+    font-weight: bolder;
+}
+span{
+    padding: 5px;
+        color: rgb(254, 249, 249);
+        margin: 5px;
+}
+.btn{
+    padding: 5px;
+    color: coral;
+    margin:5px;
+    border-radius: 5px;
+}

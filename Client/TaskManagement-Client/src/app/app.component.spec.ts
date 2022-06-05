@@ -1,11 +1,17 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import{TaskItemComponent}from './task-item/task-item.component'
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        TaskItemComponent
       ],
     }).compileComponents();
   });

@@ -1,0 +1,9 @@
+<form [formGroup]="taskModel" (ngSubmit)="CreateTask($event)">
+
+    <input type="hidden" formControlName="id"   name="id" value="0"/>
+    <input type="text" formControlName="taskName"   name="taskName" placeholder="Type Task Name..." />
+    <input type="number" formControlName="progress"   name="progress" placeholder="Type progress..."/>
+    <input  type="submit" class="btn" value="save" [disabled]="this.taskModel.invalid"/>
+
+
+</form>

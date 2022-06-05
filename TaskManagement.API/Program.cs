@@ -33,23 +33,16 @@ builder.Services
         config.Filters.Add(new ValidateRequestAttribute());
     })
     .AddNewtonsoftJson();
-//builder.Services.AddControllers();
 
-//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
+
 app.UseRouting();
 app.UseCors(options => options
-.WithOrigins(appSettings.AllowedHosts.Split(','))
+//.WithOrigins(appSettings.AllowedHosts.Split(','))
+.WithOrigins("http://localhost:4200/")
 .AllowAnyMethod()
 .AllowAnyHeader()
 //.AllowCredentials()

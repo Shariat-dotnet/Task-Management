@@ -1,0 +1,12 @@
+<div id="li" *ngIf="!isEdit">
+    <span>{{taskName}}</span>
+    <span>{{taskProgress}}</span>
+    <input data="taskId" type="button" (click)="editGet()" value="edit" class="btn btn-edit" />
+    <input data="taskId" type="button" (click)="delete()" class="btn btn-delete" value="delete" />
+</div>
+
+<div id="li-edit" *ngIf="isEdit">
+    <input type="text" [value]="taskName" id="taskName-edit">
+    <input type="text" [value]="taskProgress" id="progress-edit">
+    <input data="taskId" type="button" value="Modify" (click)="editPost()" class="btn btn-edit" />
+</div>
