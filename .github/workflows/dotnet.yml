@@ -10,11 +10,6 @@ jobs:
   build_web:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     
     - uses: actions/checkout@v3
@@ -30,6 +25,14 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       
   build_client:      
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
     - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
