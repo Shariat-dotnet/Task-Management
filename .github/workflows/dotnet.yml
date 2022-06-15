@@ -8,10 +8,11 @@ on:
 
 jobs:
   build:
-
+    #using: "composite"
     runs-on: ubuntu-latest
-
+    
     steps:
+    
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -23,3 +24,33 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      
+      
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+    - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
+      with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+    - run: npm cache clean --force
+    - run: npm install
+    - run: npm install -g @angular/cli > /dev/null
+    - run: ng build
+
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@master
+      env:
+          HOST:  ${{ secrets.HOST }}
+          USERNAME:  ${{ secrets.USERNAME }}
+          PORT:  ${{ secrets.PORT }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+      with:
+          source: "./ghost"
+          target: "/var/www/html/v2/ghost/"
+          strip_components: 2  
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
